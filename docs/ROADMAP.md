@@ -5,9 +5,11 @@
 - Complete stages in order unless a documented decision changes the dependency.
 - A stage is complete only when its exit criteria pass.
 - Every stage updates `docs/CURRENT_STATE.md`.
-- Application code has not started; all stages are currently planned.
+- Stages 0 and 1 are complete; Stage 2 is next.
 
 ## Stage 0 — Product foundation
+
+**Status:** Complete
 
 **Build:** Confirm Version 1 scope, product principles, architecture boundaries, and open decisions.
 
@@ -17,6 +19,8 @@
 
 ## Stage 1 — Repository and quality foundation
 
+**Status:** Complete
+
 **Build:** Scaffold Next.js and TypeScript; add formatting, linting, testing, type checking, environment validation, and continuous integration.
 
 **Test:** Run one test locally and in CI.
@@ -24,6 +28,8 @@
 **Exit:** Development server, lint, type check, test suite, and production build all pass.
 
 ## Stage 2 — Domain model and fixture league
+
+**Status:** Next
 
 **Build:** Define internal types for players, statistics, projections, league rules, teams, rosters, trades, and results. Create a controlled fixture league.
 

@@ -4,52 +4,44 @@
 
 **Date:** 2026-09-15
 
-**Overall status:** Documentation initialized; application implementation has not started.
+**Overall status:** Stage 1 complete; the repository and quality foundation are ready.
 
 ## Completed
 
-- Repository created and initialized.
-- Product goal documented.
-- Version 1 scope and exclusions documented.
-- Initial architecture and component boundaries documented.
-- Ordered implementation roadmap and quality gates documented.
-- Initial data-source policy documented.
-- Conceptual data model documented.
-- Test strategy documented.
-- Durable and pending decisions recorded.
-- AI-agent working rules established.
+- Product scope, architecture boundaries, roadmap, and test strategy documented.
+- Next.js App Router application scaffolded with strict TypeScript.
+- Tailwind CSS and a minimal accessible placeholder page configured.
+- npm selected for package management with a committed lockfile.
+- ESLint and Prettier configured with zero-warning lint enforcement.
+- Vitest and React Testing Library configured with a passing page test.
+- Playwright configured with a browser-level home-page smoke test.
+- Public environment variables validated at runtime with Zod.
+- GitHub Actions configured for quality checks and browser testing.
+- AI-agent working rules updated to require a fresh commit-versus-PR decision every time.
 
 ## In progress
 
-- Stage 0: product foundation review.
+- None.
+
+## Next recommended action
+
+Start Stage 2 by defining stable internal domain types and a small controlled fixture league. Before implementation, decide whether the internal position union should include kicker and SUPERFLEX support now or defer either one.
 
 ## Not started
 
-- Application scaffold
 - Domain types and fixture league
 - Scoring engine
 - Lineup optimizer
 - Trade simulator
-- Database
-- Data ingestion
+- Database and external-data ingestion
 - Projection and backtesting system
 - Sleeper integration
-- User interface
+- Trade interface
 - Deployment
-
-## Next recommended action
-
-Review the pending decisions that affect Stage 1, then scaffold the Next.js and TypeScript project with a complete local and CI quality baseline.
-
-Minimum Stage 1 choices:
-
-1. Package manager
-2. Test runner
-3. End-to-end testing tool
-4. Initial decision on kicker and SUPERFLEX type support
 
 ## Current risks
 
+- Kicker and SUPERFLEX support remain open scope decisions for the domain model.
 - External source schemas and licensing conditions can change.
 - Player identity mapping across sources may require manual review.
 - Projection quality can be overstated without leakage-safe backtesting.
@@ -62,7 +54,11 @@ See `docs/DECISIONS.md` for the authoritative pending-decision list.
 
 ## Verification performed
 
-- Documentation paths and cross-references were reviewed for consistency.
-- Sleeper's current documentation was checked for read-only access, non-commercial terms, authentication behavior, and general request guidance.
-- nflverse was confirmed as the planned historical-data source; exact datasets and columns remain intentionally undecided until real-data inspection.
-- No code, build, lint, or automated tests exist yet.
+- `npm run format:check` passed.
+- `npm run lint` passed with zero warnings.
+- `npm run typecheck` passed.
+- `npm run test` passed: one test file and one test.
+- `npm run build` passed and generated the home route.
+- The production server started successfully and served the expected project heading and status text.
+- `npm audit --audit-level=high` reported zero vulnerabilities.
+- The Playwright test is configured, but its local run was blocked because this workspace could not download Chromium from Playwright's CDN. GitHub Actions installs Chromium and runs the test in CI.

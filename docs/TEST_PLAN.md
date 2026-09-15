@@ -94,18 +94,18 @@ Required journeys:
 
 ## Stage quality gates
 
-| Stage | Required gate |
-|---|---|
-| Repository setup | Format, lint, type check, unit test, and production build pass |
-| Scoring | Hand-calculated formats and edge cases pass |
-| Optimizer | Fixture, property, and brute-force comparison pass |
-| Trade simulator | Legal and invalid trade cases pass; original rosters remain unchanged |
-| Database | Fresh migration and seed pass |
-| Data ingestion | Repeated import produces no duplicates |
-| Projections | No leakage; selected model justified against baseline |
-| Sleeper integration | Saved-fixture tests plus three representative real leagues |
-| UI | Component suite and core browser flow pass |
-| Release | Full suite, accessibility, performance, mobile, and production smoke tests pass |
+| Stage               | Required gate                                                                   |
+| ------------------- | ------------------------------------------------------------------------------- |
+| Repository setup    | Format, lint, type check, unit test, and production build pass                  |
+| Scoring             | Hand-calculated formats and edge cases pass                                     |
+| Optimizer           | Fixture, property, and brute-force comparison pass                              |
+| Trade simulator     | Legal and invalid trade cases pass; original rosters remain unchanged           |
+| Database            | Fresh migration and seed pass                                                   |
+| Data ingestion      | Repeated import produces no duplicates                                          |
+| Projections         | No leakage; selected model justified against baseline                           |
+| Sleeper integration | Saved-fixture tests plus three representative real leagues                      |
+| UI                  | Component suite and core browser flow pass                                      |
+| Release             | Full suite, accessibility, performance, mobile, and production smoke tests pass |
 
 ## Test fixtures
 
@@ -121,15 +121,16 @@ A known defect affecting scoring, lineup validity, roster ownership, projection 
 
 ## Commands
 
-Exact commands will be added after Stage 1 selects the package manager and test tools. Expected categories are:
+The Stage 1 quality commands are:
 
 ```text
-format check
-lint
-type check
-unit/integration tests
-end-to-end tests
-production build
+npm run format:check
+npm run lint
+npm run typecheck
+npm run test
+npm run test:e2e
+npm run build
+npm run check
 ```
 
-CI must run the relevant deterministic checks on every pull request.
+`npm run check` runs formatting, linting, type checking, unit tests, and the production build. Playwright runs separately because it starts the application and requires an installed browser. CI runs both groups on pushes to `main` and on every pull request.

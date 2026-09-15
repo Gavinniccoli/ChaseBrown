@@ -2,7 +2,7 @@
 
 A roster-aware fantasy football trade analyzer that evaluates how a proposed trade changes each team's best projected starting lineup, depth, risk, and rest-of-season outlook.
 
-> Status: planning and documentation. Application code has not been started.
+> Status: Stage 1 complete. The Next.js and TypeScript quality foundation is ready; domain modeling is next.
 
 ## Product goal
 
@@ -44,6 +44,15 @@ Dynasty picks, ESPN integration, individual defensive players, payments, and gen
 ## Core principle
 
 The analytical engine must be deterministic and testable. Any future generative-AI feature may explain calculated results, but it must not create or override the trade score.
+
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+Run the complete local quality gate with `npm run check`. Browser tests run separately with `npm run test:e2e` after Playwright's Chromium browser is installed.
 
 ## Development status
 

@@ -29,6 +29,7 @@ If documentation and code disagree, stop and identify the conflict. Do not silen
 - Run the relevant formatter, linter, type checker, tests, and production build before declaring work complete.
 - Report which checks ran, their results, and any checks that could not run.
 - Update `docs/CURRENT_STATE.md`, `docs/ROADMAP.md`, and affected design documents at stage boundaries.
+- Before every commit, push, or pull request, ask the user whether to commit directly or use a branch and pull request. A prior answer does not carry forward to later changes.
 - Do not commit, push, open a pull request, or modify external resources unless the user requests it.
 
 ## Architecture constraints
@@ -59,3 +60,13 @@ When finishing a task, summarize:
 4. Verification performed
 5. Remaining risks or open questions
 6. Recommended next step
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
