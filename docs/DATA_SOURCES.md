@@ -8,10 +8,10 @@ Licensing and access conditions can change. Re-check source terms before commerc
 
 ## Approved initial sources
 
-| Source | Purpose | Access | Initial refresh | Notes |
-|---|---|---|---|---|
-| [Sleeper API](https://docs.sleeper.com/) | League settings, users, rosters, matchups, transactions, player IDs | Documented read-only HTTP API; no token for documented endpoints | On import and user-requested refresh, with caching | Sleeper states that non-commercial use is free, commercial use requires contact, and clients should generally remain below 1,000 calls/minute |
-| [nflverse](https://nflverse.nflverse.com/) | Historical NFL player statistics and related analytical datasets | Published data files and open-source tooling | After games or source releases; completed seasons become effectively static | Verify the license of each selected dataset/package and record its version |
+| Source                                     | Purpose                                                             | Access                                                           | Initial refresh                                                             | Notes                                                                                                                                         |
+| ------------------------------------------ | ------------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Sleeper API](https://docs.sleeper.com/)   | League settings, users, rosters, matchups, transactions, player IDs | Documented read-only HTTP API; no token for documented endpoints | On import and user-requested refresh, with caching                          | Sleeper states that non-commercial use is free, commercial use requires contact, and clients should generally remain below 1,000 calls/minute |
+| [nflverse](https://nflverse.nflverse.com/) | Historical NFL player statistics and related analytical datasets    | Published data files and open-source tooling                     | After games or source releases; completed seasons become effectively static | Verify the license of each selected dataset/package and record its version                                                                    |
 
 ## Sleeper integration
 
