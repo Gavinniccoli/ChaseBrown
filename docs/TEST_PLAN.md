@@ -116,6 +116,10 @@ Stage 3 unit tests cover standard, half-PPR, full-PPR, decimal multipliers, nega
 
 Stage 4 unit tests cover both controlled fixture teams, fixed and flexible eligibility, SUPERFLEX behavior, duplicate prevention, missing positions, byes and unavailable players, zero and missing projections, negative projections, deterministic ties, input immutability, malformed relational input, empty and larger rosters, and a known greedy failure. The production optimizer is also compared with an independent brute-force reference across 1,000 deterministic generated roster and lineup configurations using five seeds.
 
+### Implemented trade-simulator coverage
+
+Stage 5 unit tests cover exact one-for-one, two-for-one, and three-for-two results; reversed team roles; normalized identifiers; frozen source inputs; repeated independent simulations; invalid teams, empty sides, nonexistent players, wrong ownership, and duplicate pieces; and a trade that creates an unfilled starting position. Five hundred deterministic generated uneven trades verify player conservation, exclusive ownership, roster-size arithmetic, transfer direction, and incoming-player ordering.
+
 ## Test fixtures
 
 - Keep fixtures small, readable, sanitized, and versioned.

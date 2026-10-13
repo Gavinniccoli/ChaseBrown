@@ -157,6 +157,14 @@ Constraint: a player cannot appear on two teams in the same imported league snap
 - `team_a_sends`
 - `team_b_sends`
 
+### TradeSimulationResult
+
+- validated and normalized proposal
+- copied post-trade roster for team A
+- copied post-trade roster for team B
+
+Simulation removes outgoing players while preserving the relative order of every retained player, then appends incoming players in proposal order. It does not modify the source league snapshot and does not enforce a roster-size cap that is not present in the league domain model.
+
 ### OptimizedLineup
 
 - assignments from roster slots to players

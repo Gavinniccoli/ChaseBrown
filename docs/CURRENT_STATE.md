@@ -4,7 +4,7 @@
 
 **Date:** 2026-10-13
 
-**Overall status:** Stage 4 complete; valid highest-projected starting lineups can be selected under league-specific roster rules.
+**Overall status:** Stage 5 complete; valid two-team trades can be simulated on copied rosters without changing the imported snapshot.
 
 ## Completed
 
@@ -29,6 +29,13 @@
 - Missing projections safely contribute zero points, while duplicate identities, invalid rules, unknown roster players, duplicate roster entries, non-finite projections, and ambiguous duplicate projections return structured `LineupOptimizationError` failures.
 - A separate recursive brute-force reference verifies the production algorithm across 1,000 deterministic generated roster and lineup configurations using five independent seeds.
 - Both controlled fixture teams have manually checked optimal-lineup totals, and targeted tests cover greedy failures, byes, injuries, ties, negative projections, missing positions, immutability, empty inputs, and a thirty-player roster.
+- Pure `simulateTrade` engine implemented over internal `LeagueSnapshot` and `TradeProposal` types without React, database, or external-platform dependencies.
+- One-for-one and uneven two-for-one and three-for-two exchanges remove outgoing players, preserve retained-player order, and append incoming players in proposal order.
+- Trade validation now distinguishes nonexistent players from known players sent by the wrong team and provides explicit empty-side messages.
+- Simulation returns new roster objects and arrays; frozen-input and repeated-simulation tests prove the original snapshot and proposal are not mutated.
+- A trade-to-lineup integration test proves a legal exchange can create and report an unfilled starting position.
+- Five hundred deterministic generated uneven trades verify player conservation, exclusive ownership, exact roster-size arithmetic, transfer direction, and incoming-player ordering.
+- The user will personally design the baseline projection formula; AI assistance at that stage is limited to requested support, testing, leakage prevention, and backtesting unless the user explicitly expands the scope.
 - AI-agent working rules require a fresh commit-versus-PR decision every time.
 
 ## In progress
@@ -37,11 +44,10 @@
 
 ## Next recommended action
 
-Start Stage 5 by implementing an immutable two-team trade simulator. Validate ownership and duplicates, support uneven exchanges, and prove that original rosters remain unchanged.
+Start Stage 6 by combining trade simulation with the lineup optimizer. Calculate each team's before-and-after lineup totals and identify which players enter and leave the starting lineup.
 
 ## Not started
 
-- Trade simulator
 - Database and external-data ingestion
 - Projection and backtesting system
 - Sleeper integration
@@ -62,12 +68,12 @@ Start Stage 5 by implementing an immutable two-team trade simulator. Validate ow
 
 See `docs/DECISIONS.md` for the authoritative pending-decision list.
 
-## Stage 4 verification
+## Stage 5 verification
 
 - `npm run format:check` passed.
 - `npm run lint` passed with zero warnings.
 - `npm run typecheck` passed.
-- `npm run test` passed with six test files and seventy-one tests, including 1,000 generated reference comparisons.
+- `npm run test` passed with seven test files and eighty-nine tests, including 1,000 generated optimizer comparisons and 500 generated uneven trades.
 - `npm run build` passed with Next.js 16.4.0.
 - `npm run check` passed in full.
 - `npm audit --audit-level=critical` passed with no critical findings; the previously documented five high-severity development-only lint-chain findings remain.

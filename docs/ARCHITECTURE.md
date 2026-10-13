@@ -89,6 +89,8 @@ flowchart TD
 - Optimize before and after lineups for each analyzed week.
 - Calculate lineup, depth, scarcity, risk, and fairness components.
 - Return structured facts from which the UI derives its explanation.
+- The implemented Stage 5 `simulateTrade` function validates the proposal against an internal `LeagueSnapshot`, removes outgoing players from copied arrays, and appends incoming players in proposal order.
+- Uneven trades intentionally produce different roster sizes. Roster-size limits are not enforced because the current domain model does not yet contain platform roster-cap settings.
 
 ## Primary request flow
 

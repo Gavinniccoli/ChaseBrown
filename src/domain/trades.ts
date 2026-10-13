@@ -5,8 +5,12 @@ import type { OptimizedLineup } from './lineup';
 export const tradeProposalSchema = z.object({
   teamAId: z.string().trim().min(1),
   teamBId: z.string().trim().min(1),
-  teamASends: z.array(z.string().trim().min(1)).min(1),
-  teamBSends: z.array(z.string().trim().min(1)).min(1),
+  teamASends: z
+    .array(z.string().trim().min(1))
+    .min(1, 'team A must send at least one player'),
+  teamBSends: z
+    .array(z.string().trim().min(1))
+    .min(1, 'team B must send at least one player'),
 });
 
 export type TradeProposal = Readonly<{

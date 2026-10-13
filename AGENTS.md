@@ -25,6 +25,7 @@ If documentation and code disagree, stop and identify the conflict. Do not silen
 - Access external platforms through adapters that translate into internal types.
 - Never invent API fields, dataset columns, licenses, or scoring behavior. Verify them against current documentation and representative fixtures.
 - Never place credentials, tokens, cookies, or personal league data in the repository.
+- The user will personally design the baseline projection algorithm. At the projection stages, assist with data preparation, implementation support, tests, leakage prevention, and backtesting, but do not choose or implement the projection formula unless the user explicitly asks.
 - Add or update tests whenever behavior changes.
 - Run the relevant formatter, linter, type checker, tests, and production build before declaring work complete.
 - Report which checks ran, their results, and any checks that could not run.
@@ -64,7 +65,7 @@ When finishing a task, summarize:
 
 <!-- BEGIN:nextjs-agent-rules -->
 
-# This is NOT the Next.js you know
+## This is NOT the Next.js you know
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
 

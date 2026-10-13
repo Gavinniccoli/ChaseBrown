@@ -5,7 +5,7 @@
 - Complete stages in order unless a documented decision changes the dependency.
 - A stage is complete only when its exit criteria pass.
 - Every stage updates `docs/CURRENT_STATE.md`.
-- Stages 0 through 4 are complete; Stage 5 is next.
+- Stages 0 through 5 are complete; Stage 6 is next.
 
 ## Stage 0 — Product foundation
 
@@ -59,7 +59,7 @@
 
 ## Stage 5 — Trade simulator
 
-**Status:** Next
+**Status:** Complete
 
 **Build:** Validate and apply one-for-one and uneven two-team trades to copied rosters.
 
@@ -68,6 +68,8 @@
 **Exit:** Legal trades produce exact expected rosters; invalid trades return clear domain errors.
 
 ## Stage 6 — Basic trade analysis
+
+**Status:** Next
 
 **Build:** Optimize each team before and after a trade and report lineup totals and changed starters.
 
@@ -102,6 +104,8 @@
 ## Stage 10 — Baseline projections
 
 **Build:** Generate versioned weekly expected, low, and high projections using transparent historical and opportunity inputs.
+
+**Ownership:** The user will personally design the projection formula. AI assistance is limited to requested implementation support, data preparation, testing, leakage prevention, and backtesting unless the user explicitly expands that scope.
 
 **Test:** Weight calculations, byes, missing history, rookies, small samples, and outcome ordering.
 

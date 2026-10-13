@@ -156,7 +156,16 @@ describe('trade proposal validation', () => {
         { ...validProposal, teamASends: [] },
         controlledLeague,
       ),
-    ).toThrow(/Too small/);
+    ).toThrow(/team A must send at least one player/);
+  });
+
+  it('rejects a player that does not exist in the league snapshot', () => {
+    expect(() =>
+      validateTradeProposal(
+        { ...validProposal, teamASends: ['missing-player'] },
+        controlledLeague,
+      ),
+    ).toThrow(/trade references unknown player missing-player/);
   });
 
   it('rejects a player sent by a team that does not own them', () => {

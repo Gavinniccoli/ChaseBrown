@@ -2,7 +2,7 @@
 
 A roster-aware fantasy football trade analyzer that evaluates how a proposed trade changes each team's best projected starting lineup, depth, risk, and rest-of-season outlook.
 
-> Status: Stage 4 complete. The exact lineup optimizer selects the highest-projected valid starters under league-specific roster rules; trade simulation is next.
+> Status: Stage 5 complete. Valid one-for-one and uneven two-team trades can be simulated without mutating imported rosters; before-and-after analysis is next.
 
 ## Product goal
 

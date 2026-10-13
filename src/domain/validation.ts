@@ -186,6 +186,7 @@ export function validateTradeProposal(
   const proposal = structuralResult.data;
   const issues: string[] = [];
   const teamIds = new Set(snapshot.teams.map((team) => team.id));
+  const playerIds = new Set(snapshot.players.map((player) => player.id));
 
   if (!teamIds.has(proposal.teamAId)) {
     issues.push(`trade references unknown team ${proposal.teamAId}`);
@@ -217,7 +218,9 @@ export function validateTradeProposal(
   const teamBPlayerIds = new Set(teamBRoster?.playerIds ?? []);
 
   for (const playerId of proposal.teamASends) {
-    if (!teamAPlayerIds.has(playerId)) {
+    if (!playerIds.has(playerId)) {
+      issues.push(`trade references unknown player ${playerId}`);
+    } else if (!teamAPlayerIds.has(playerId)) {
       issues.push(
         `player ${playerId} is not owned by team ${proposal.teamAId}`,
       );
@@ -225,7 +228,9 @@ export function validateTradeProposal(
   }
 
   for (const playerId of proposal.teamBSends) {
-    if (!teamBPlayerIds.has(playerId)) {
+    if (!playerIds.has(playerId)) {
+      issues.push(`trade references unknown player ${playerId}`);
+    } else if (!teamBPlayerIds.has(playerId)) {
       issues.push(
         `player ${playerId} is not owned by team ${proposal.teamBId}`,
       );
