@@ -2,9 +2,9 @@
 
 ## Checkpoint
 
-**Date:** 2026-10-12
+**Date:** 2026-10-13
 
-**Overall status:** Stage 2 complete; the internal domain model and controlled fixture league are ready.
+**Overall status:** Stage 3 complete; normalized weekly statistics can be converted into league-specific fantasy points.
 
 ## Completed
 
@@ -17,6 +17,11 @@
 - Runtime validation implemented for structural data, unique identities, cross-record references, roster ownership, projection keys and ranges, and proposed trades.
 - Controlled full-PPR fixture created with two twelve-player teams, known projections, a bye player, an unavailable player, FLEX competition, a tied projection, and a useful second quarterback.
 - The fixture loads entirely from local TypeScript without a database or external API.
+- Pure `calculateFantasyPoints` scoring function implemented independently from React, databases, and external APIs.
+- Direct statistic-to-event scoring implemented for passing, rushing, receiving, turnovers, kicking, and team-defense counting statistics.
+- Exclusive team-defense points-allowed tiers implemented for 0, 1–6, 7–13, 14–20, 21–27, 28–34, and 35-plus points.
+- Missing normalized counting statistics default to zero, missing scoring multipliers contribute zero, and nullable points allowed distinguishes non-defense records from shutouts.
+- Hand-calculated standard, half-PPR, full-PPR, passing, decimal, negative-yardage, kicker, and defense examples are covered by unit tests.
 - AI-agent working rules require a fresh commit-versus-PR decision every time.
 
 ## In progress
@@ -25,11 +30,10 @@
 
 ## Next recommended action
 
-Start Stage 3 by implementing a pure fantasy-scoring function over normalized weekly statistics and league scoring settings. Define hand-calculated standard, half-PPR, full-PPR, kicker, and defense cases before implementation.
+Start Stage 4 by implementing a lineup optimizer for fixed positions and FLEX. Establish a brute-force reference implementation first, then compare the production optimizer against it across fixture and generated rosters.
 
 ## Not started
 
-- Scoring engine
 - Lineup optimizer
 - Trade simulator
 - Database and external-data ingestion
@@ -40,8 +44,8 @@ Start Stage 3 by implementing a pure fantasy-scoring function over normalized we
 
 ## Current risks
 
-- The exact supported kicker and team-defense scoring rules must be finalized with Stage 3 tests.
 - Kicker and SUPERFLEX inclusion in the first public release remain product decisions even though the domain model can represent them.
+- The scoring engine intentionally supports only the normalized events listed in `scoringEvents`; platform adapters must report unsupported source scoring fields rather than silently claim complete compatibility.
 - External source schemas and licensing conditions can change.
 - Player identity mapping across sources may require manual review.
 - Projection quality can be overstated without leakage-safe backtesting.
@@ -52,14 +56,12 @@ Start Stage 3 by implementing a pure fantasy-scoring function over normalized we
 
 See `docs/DECISIONS.md` for the authoritative pending-decision list.
 
-## Verification performed
+## Stage 3 verification
 
-- Two read-only subagents independently reviewed the domain design and controlled fixture/test plan; neither changed files or external resources.
-- `npm run format` completed.
+- `npm run format:check` passed.
 - `npm run lint` passed with zero warnings.
 - `npm run typecheck` passed.
-- `npm run test` passed: four test files and twenty-two tests.
+- `npm run test` passed with five test files and forty-four tests.
 - `npm run build` passed with Next.js 16.4.0.
-- `npm run check` passed in full after rebuilding from a clean generated cache.
-- `npm audit fix` updated `sharp` to 0.35.5 and `source-map-js` to 1.2.2 without forced or breaking changes.
-- `npm audit --audit-level=high` confirms the prior critical framework finding is resolved; five high-severity lint-tool findings remain without a non-breaking upstream fix.
+- `npm run check` passed in full.
+- `npm run test:e2e` could not start locally because this workspace lacks Playwright's Chromium binary. `npx playwright install chromium` was attempted, but the restricted download returned empty archives. CI remains configured to install the browser and run this unchanged smoke test after the repository update.

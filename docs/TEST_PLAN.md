@@ -108,6 +108,10 @@ Required journeys:
 | UI                  | Component suite and core browser flow pass                                      |
 | Release             | Full suite, accessibility, performance, mobile, and production smoke tests pass |
 
+### Implemented scoring coverage
+
+Stage 3 unit tests cover standard, half-PPR, full-PPR, decimal multipliers, negative yardage, zero and omitted statistics, omitted scoring multipliers, passing turnovers, kicker events, every team-defense points-allowed boundary, and combined defense scoring.
+
 ## Test fixtures
 
 - Keep fixtures small, readable, sanitized, and versioned.

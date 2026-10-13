@@ -64,6 +64,8 @@ flowchart TD
 
 - Convert raw statistics into fantasy points using league settings.
 - Remain a pure, deterministic module.
+- The implemented `calculateFantasyPoints` function lives in `src/engine/scoring` and treats omitted supported scoring events as zero.
+- Team-defense points-allowed tiers apply only when the normalized statistic supplies a non-null `pointsAllowed` value.
 
 ### Projection engine
 

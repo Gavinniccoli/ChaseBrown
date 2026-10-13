@@ -11,8 +11,11 @@ The core in-memory domain model is implemented in `src/domain`. Exact database t
 - FLEX eligibility is derived centrally as RB/WR/TE.
 - SUPERFLEX eligibility is derived centrally as QB/RB/WR/TE.
 - Weekly availability belongs to projections rather than permanent player identity.
+- Normalized weekly counting statistics default to zero when the source does not provide them.
+- `pointsAllowed` is nullable so `null` can distinguish a non-defense stat line from a defense that allowed zero points.
 - A league snapshot contains normalized league rules, players, teams, rosters, projections, and optional raw statistics without depending on a database or external API.
 - Runtime validation checks both structure and cross-record relationships before engines consume a snapshot or trade proposal.
+- League-specific fantasy points are calculated rather than stored in the in-memory model.
 
 Type-level support for kicker and SUPERFLEX does not resolve whether either is required for the first public release; those product decisions remain pending.
 
@@ -105,6 +108,8 @@ Constraint: `(platform, external_id, season)` is unique.
 - `league_id`
 - normalized supported scoring multipliers
 - source configuration as validated JSON for traceability
+
+An omitted supported multiplier contributes zero points. The scoring engine multiplies each normalized statistic by the corresponding league multiplier and applies exactly one points-allowed tier when that statistic is applicable.
 
 ### RosterSlot
 

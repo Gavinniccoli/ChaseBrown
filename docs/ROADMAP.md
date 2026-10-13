@@ -5,7 +5,7 @@
 - Complete stages in order unless a documented decision changes the dependency.
 - A stage is complete only when its exit criteria pass.
 - Every stage updates `docs/CURRENT_STATE.md`.
-- Stages 0 through 2 are complete; Stage 3 is next.
+- Stages 0 through 3 are complete; Stage 4 is next.
 
 ## Stage 0 — Product foundation
 
@@ -39,7 +39,7 @@
 
 ## Stage 3 — Scoring engine
 
-**Status:** Next
+**Status:** Complete
 
 **Build:** Calculate fantasy points from raw statistics and arbitrary supported league scoring settings.
 
@@ -48,6 +48,8 @@
 **Exit:** All supported scoring examples match exact expected values.
 
 ## Stage 4 — Lineup optimizer
+
+**Status:** Next
 
 **Build:** Select the highest-projected valid lineup for QB, RB, WR, TE, FLEX, optional K, and DST.
 

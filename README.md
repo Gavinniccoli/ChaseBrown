@@ -2,7 +2,7 @@
 
 A roster-aware fantasy football trade analyzer that evaluates how a proposed trade changes each team's best projected starting lineup, depth, risk, and rest-of-season outlook.
 
-> Status: Stage 2 complete. The internal fantasy-football model and controlled fixture league are ready; the scoring engine is next.
+> Status: Stage 3 complete. The scoring engine calculates league-specific fantasy points from normalized weekly statistics; the lineup optimizer is next.
 
 ## Product goal
 

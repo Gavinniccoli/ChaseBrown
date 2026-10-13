@@ -20,6 +20,7 @@ This file records durable product and architecture decisions. Update an existing
 | D-012 | 2026-09-15 | Do not use a generative model to calculate or override the trade score.                                                    | The score must remain testable; a model may later explain structured results.                                                         |
 | D-013 | 2026-09-15 | Use npm, Vitest, React Testing Library, and Playwright for the initial toolchain.                                          | These tools provide a conventional dependency workflow plus focused unit, component, and browser testing for the Next.js application. |
 | D-014 | 2026-10-12 | Represent kickers as a player position and lineup slot, and SUPERFLEX only as a lineup slot, in the internal domain model. | Supporting these concepts in stable types prevents redesign later without deciding whether either format must ship in Version 1.      |
+| D-015 | 2026-10-13 | Treat omitted normalized counting statistics and scoring multipliers as zero; use nullable points allowed.                 | Imports can safely omit irrelevant fields, while `null` distinguishes a non-defense stat line from a defense that recorded a shutout. |
 
 ## Pending decisions
 
