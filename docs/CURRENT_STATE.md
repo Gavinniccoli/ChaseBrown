@@ -4,7 +4,7 @@
 
 **Date:** 2026-10-13
 
-**Overall status:** Stage 3 complete; normalized weekly statistics can be converted into league-specific fantasy points.
+**Overall status:** Stage 4 complete; valid highest-projected starting lineups can be selected under league-specific roster rules.
 
 ## Completed
 
@@ -22,6 +22,13 @@
 - Exclusive team-defense points-allowed tiers implemented for 0, 1–6, 7–13, 14–20, 21–27, 28–34, and 35-plus points.
 - Missing normalized counting statistics default to zero, missing scoring multipliers contribute zero, and nullable points allowed distinguishes non-defense records from shutouts.
 - Hand-calculated standard, half-PPR, full-PPR, passing, decimal, negative-yardage, kicker, and defense examples are covered by unit tests.
+- Exact lineup optimizer implemented with maximum-cardinality, minimum-cost flow over roster players and expanded lineup slots.
+- The optimizer fills as many required slots as possible before maximizing expected points, preventing negative projections from incorrectly creating optional empty slots.
+- Fixed slots, FLEX, SUPERFLEX, optional K, and DST use the central eligibility rules and prevent the same player from filling multiple positions.
+- Optimizer results include assignments, bench players, repeated unfilled slot types, and the exact projected total.
+- Missing projections safely contribute zero points, while duplicate identities, invalid rules, unknown roster players, duplicate roster entries, non-finite projections, and ambiguous duplicate projections return structured `LineupOptimizationError` failures.
+- A separate recursive brute-force reference verifies the production algorithm across 1,000 deterministic generated roster and lineup configurations using five independent seeds.
+- Both controlled fixture teams have manually checked optimal-lineup totals, and targeted tests cover greedy failures, byes, injuries, ties, negative projections, missing positions, immutability, empty inputs, and a thirty-player roster.
 - AI-agent working rules require a fresh commit-versus-PR decision every time.
 
 ## In progress
@@ -30,11 +37,10 @@
 
 ## Next recommended action
 
-Start Stage 4 by implementing a lineup optimizer for fixed positions and FLEX. Establish a brute-force reference implementation first, then compare the production optimizer against it across fixture and generated rosters.
+Start Stage 5 by implementing an immutable two-team trade simulator. Validate ownership and duplicates, support uneven exchanges, and prove that original rosters remain unchanged.
 
 ## Not started
 
-- Lineup optimizer
 - Trade simulator
 - Database and external-data ingestion
 - Projection and backtesting system
@@ -49,19 +55,20 @@ Start Stage 4 by implementing a lineup optimizer for fixed positions and FLEX. E
 - External source schemas and licensing conditions can change.
 - Player identity mapping across sources may require manual review.
 - Projection quality can be overstated without leakage-safe backtesting.
-- Flexible roster positions can make naive lineup algorithms incorrect.
+- The optimizer supports SUPERFLEX technically, but whether SUPERFLEX must ship in Version 1 remains a product decision.
 - `npm audit` still reports five high-severity development-tool findings through `eslint-config-next -> fast-glob -> micromatch -> braces`; npm currently offers only a forced downgrade to `eslint-config-next@14.2.35`, so no unsafe forced fix was applied.
 
 ## Known open questions
 
 See `docs/DECISIONS.md` for the authoritative pending-decision list.
 
-## Stage 3 verification
+## Stage 4 verification
 
 - `npm run format:check` passed.
 - `npm run lint` passed with zero warnings.
 - `npm run typecheck` passed.
-- `npm run test` passed with five test files and forty-four tests.
+- `npm run test` passed with six test files and seventy-one tests, including 1,000 generated reference comparisons.
 - `npm run build` passed with Next.js 16.4.0.
 - `npm run check` passed in full.
-- `npm run test:e2e` could not start locally because this workspace lacks Playwright's Chromium binary. `npx playwright install chromium` was attempted, but the restricted download returned empty archives. CI remains configured to install the browser and run this unchanged smoke test after the repository update.
+- `npm audit --audit-level=critical` passed with no critical findings; the previously documented five high-severity development-only lint-chain findings remain.
+- The local browser test remains unavailable because this workspace lacks Playwright's Chromium binary; GitHub CI installs it and runs the unchanged smoke test after publication.

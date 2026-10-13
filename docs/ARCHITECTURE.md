@@ -78,6 +78,9 @@ flowchart TD
 - Find the highest-projected valid lineup under league roster constraints.
 - Enforce eligibility and prevent duplicate player use.
 - Report unfilled slots rather than silently ignoring them.
+- The implemented `optimizeLineup` function in `src/engine/lineup` models slots and players as a bipartite flow graph.
+- It maximizes filled required slots first and projected points second, so a negative projection cannot cause an otherwise fillable required slot to be left empty.
+- The production flow algorithm is verified against a separate recursive brute-force reference across deterministic generated rosters.
 
 ### Trade engine
 

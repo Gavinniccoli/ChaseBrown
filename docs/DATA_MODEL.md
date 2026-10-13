@@ -164,6 +164,8 @@ Constraint: a player cannot appear on two teams in the same imported league snap
 - bench players
 - unfilled slots
 
+The optimizer treats each requested slot quantity as a distinct slot instance. A player can be assigned at most once. Its objective is lexicographic: maximize the number of filled valid slots, then maximize total expected points. Players without a supplied projection remain eligible with zero projected points.
+
 ### TradeAnalysis
 
 - original and simulated lineup totals

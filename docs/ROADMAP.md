@@ -5,7 +5,7 @@
 - Complete stages in order unless a documented decision changes the dependency.
 - A stage is complete only when its exit criteria pass.
 - Every stage updates `docs/CURRENT_STATE.md`.
-- Stages 0 through 3 are complete; Stage 4 is next.
+- Stages 0 through 4 are complete; Stage 5 is next.
 
 ## Stage 0 — Product foundation
 
@@ -49,7 +49,7 @@
 
 ## Stage 4 — Lineup optimizer
 
-**Status:** Next
+**Status:** Complete
 
 **Build:** Select the highest-projected valid lineup for QB, RB, WR, TE, FLEX, optional K, and DST.
 
@@ -58,6 +58,8 @@
 **Exit:** Production results match a brute-force reference across fixtures and generated rosters.
 
 ## Stage 5 — Trade simulator
+
+**Status:** Next
 
 **Build:** Validate and apply one-for-one and uneven two-team trades to copied rosters.
 

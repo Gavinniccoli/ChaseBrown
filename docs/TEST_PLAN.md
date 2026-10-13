@@ -112,6 +112,10 @@ Required journeys:
 
 Stage 3 unit tests cover standard, half-PPR, full-PPR, decimal multipliers, negative yardage, zero and omitted statistics, omitted scoring multipliers, passing turnovers, kicker events, every team-defense points-allowed boundary, and combined defense scoring.
 
+### Implemented lineup-optimizer coverage
+
+Stage 4 unit tests cover both controlled fixture teams, fixed and flexible eligibility, SUPERFLEX behavior, duplicate prevention, missing positions, byes and unavailable players, zero and missing projections, negative projections, deterministic ties, input immutability, malformed relational input, empty and larger rosters, and a known greedy failure. The production optimizer is also compared with an independent brute-force reference across 1,000 deterministic generated roster and lineup configurations using five seeds.
+
 ## Test fixtures
 
 - Keep fixtures small, readable, sanitized, and versioned.
