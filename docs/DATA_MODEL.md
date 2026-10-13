@@ -2,7 +2,19 @@
 
 ## Status
 
-This is the conceptual model. Exact database types, indexes, and ORM syntax will be finalized during the database stage.
+The core in-memory domain model is implemented in `src/domain`. Exact database types, indexes, and ORM syntax will be finalized during the database stage.
+
+## Implemented domain boundaries
+
+- Player positions are `QB`, `RB`, `WR`, `TE`, `K`, and `DST`.
+- `FLEX` and `SUPERFLEX` are lineup slots, not player positions.
+- FLEX eligibility is derived centrally as RB/WR/TE.
+- SUPERFLEX eligibility is derived centrally as QB/RB/WR/TE.
+- Weekly availability belongs to projections rather than permanent player identity.
+- A league snapshot contains normalized league rules, players, teams, rosters, projections, and optional raw statistics without depending on a database or external API.
+- Runtime validation checks both structure and cross-record relationships before engines consume a snapshot or trade proposal.
+
+Type-level support for kicker and SUPERFLEX does not resolve whether either is required for the first public release; those product decisions remain pending.
 
 ## Design principles
 

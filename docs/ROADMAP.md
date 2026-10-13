@@ -5,7 +5,7 @@
 - Complete stages in order unless a documented decision changes the dependency.
 - A stage is complete only when its exit criteria pass.
 - Every stage updates `docs/CURRENT_STATE.md`.
-- Stages 0 and 1 are complete; Stage 2 is next.
+- Stages 0 through 2 are complete; Stage 3 is next.
 
 ## Stage 0 — Product foundation
 
@@ -29,7 +29,7 @@
 
 ## Stage 2 — Domain model and fixture league
 
-**Status:** Next
+**Status:** Complete
 
 **Build:** Define internal types for players, statistics, projections, league rules, teams, rosters, trades, and results. Create a controlled fixture league.
 
@@ -38,6 +38,8 @@
 **Exit:** Both fixture rosters load without a database or external API.
 
 ## Stage 3 — Scoring engine
+
+**Status:** Next
 
 **Build:** Calculate fantasy points from raw statistics and arbitrary supported league scoring settings.
 

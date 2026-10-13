@@ -2,7 +2,7 @@
 
 A roster-aware fantasy football trade analyzer that evaluates how a proposed trade changes each team's best projected starting lineup, depth, risk, and rest-of-season outlook.
 
-> Status: Stage 1 complete. The Next.js and TypeScript quality foundation is ready; domain modeling is next.
+> Status: Stage 2 complete. The internal fantasy-football model and controlled fixture league are ready; the scoring engine is next.
 
 ## Product goal
 

@@ -97,6 +97,7 @@ Required journeys:
 | Stage               | Required gate                                                                   |
 | ------------------- | ------------------------------------------------------------------------------- |
 | Repository setup    | Format, lint, type check, unit test, and production build pass                  |
+| Domain model        | Runtime validation rejects invalid identities, references, slots, and trades    |
 | Scoring             | Hand-calculated formats and edge cases pass                                     |
 | Optimizer           | Fixture, property, and brute-force comparison pass                              |
 | Trade simulator     | Legal and invalid trade cases pass; original rosters remain unchanged           |

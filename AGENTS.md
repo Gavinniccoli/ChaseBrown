@@ -56,10 +56,11 @@ When finishing a task, summarize:
 
 1. What changed
 2. Why it changed
-3. Files affected
-4. Verification performed
-5. Remaining risks or open questions
-6. Recommended next step
+3. Files affected, including the important functions, types, or configuration entries changed in each file
+4. How the implementation works, with concrete references to the relevant function or code path rather than only a high-level description
+5. Verification performed, including the exact commands and results
+6. Remaining risks or open questions
+7. Recommended next step
 
 <!-- BEGIN:nextjs-agent-rules -->
 
